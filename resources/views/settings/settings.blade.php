@@ -98,6 +98,7 @@
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
 
                                     @foreach (config('laravellocalization.supportedLocales') as $key => $lang)
+{{--                                        هاي الطريقة مشان اقدر اوصل للمفتاح والقيمة بالترجمة, يعني امشي مع الي جوات الconfig بتعرف--}}
                                         <li class="nav-item">
                                             <a class="nav-link @if ($loop->index == 0) active @endif"
                                                id="home-tab" data-toggle="tab" href="#{{ $key }}" role="tab"
