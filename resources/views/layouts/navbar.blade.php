@@ -1,7 +1,7 @@
 <header class="navbar">
     <div class="container-fluid">
         <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
-        <a class="navbar-brand" href="#"></a>
+        <a class="navbar-brand" href="{{route('dashboard.dashboard')}}"></a>
         <ul class="nav navbar-nav hidden-md-down">
             <li class="nav-item">
                 <a class="nav-link navbar-toggler layout-toggler" href="#">&#9776;</a>
@@ -17,6 +17,26 @@
                 <a class="nav-link" href="#">Settings</a>
             </li>-->
         </ul>
+        <div class="btn-group mb-1">
+            <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                @if (App::getLocale() == 'ar')
+                    {{ LaravelLocalization::getCurrentLocaleName() }}
+                    <img src="{{ URL::asset('img/flags/Syria.png') }}" alt="">
+                @else
+                    {{ LaravelLocalization::getCurrentLocaleName() }}
+                    <img src="{{ URL::asset('img/flags/USA.png') }}" alt="">
+                @endif
+            </button>
+            <div class="dropdown-menu">
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
+                       href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                        {{ $properties['native'] }}
+                    </a>
+                @endforeach
+            </div>
+        </div>
         <ul class="nav navbar-nav pull-left hidden-md-down">
             <li class="nav-item">
                 <a class="nav-link aside-toggle" href="#"><i class="icon-bell"></i><span class="tag tag-pill tag-danger">5</span></a>
@@ -27,9 +47,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="#"><i class="icon-location-pin"></i></a>
             </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img src="img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                    <img src="{{asset('img/avatars/6.jpg')}}" class="img-avatar" alt="admin@bootstrapmaster.com">
                     <span class="hidden-md-down">مدیر</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
@@ -46,7 +67,6 @@
             <li class="nav-item">
                 <a class="nav-link navbar-toggler aside-toggle" href="#">&#9776;</a>
             </li>
-
         </ul>
     </div>
 </header>

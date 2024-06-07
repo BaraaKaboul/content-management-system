@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
+
+
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function() { //...
+                                                                                        //ال as متل كأنو عمل قلو dashboard.dashboard  .  dashboard.settings
+        Route::group(['prefix' => 'dashboard','controller' => SettingsController::class,'as' => 'dashboard.'],function (){
+            Route::get('/', 'index')->name('dashboard');
+            Route::get('/settings', 'showSettings')->name('settings');
+            Route::post('/store', 'store')->name('sittings.store');
+        });
+
+
 });
