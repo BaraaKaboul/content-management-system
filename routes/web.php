@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Auth::routes();
+Route::post('logout',[LoginController::class,'logout'])->name('logout');
 
 Route::group(
     [
@@ -24,9 +27,16 @@ Route::group(
                                                                                         //ال as متل كأنو عمل قلو dashboard.dashboard  .  dashboard.settings
         Route::group(['prefix' => 'dashboard','controller' => SettingsController::class,'as' => 'dashboard.'],function (){
             Route::get('/', 'index')->name('dashboard');
-            Route::get('/settings', 'showSettings')->name('settings');
-            Route::post('/store', 'store')->name('sittings.store');
+
+            Route::group(['middleware' => ['auth','checkAuth']],function (){
+                Route::get('/settings', 'showSettings')->name('settings');
+                Route::post('/store', 'store')->name('sittings.store');
+            });
         });
 
 
 });
+
+
+
+
