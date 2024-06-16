@@ -15,6 +15,7 @@
     <meta name="description" content="CoreUI Bootstrap 4 Admin Template">
     <meta name="author" content="Lukasz Holeczek">
     <meta name="keyword" content="CoreUI Bootstrap 4 Admin Template">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
     <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
     @include('layouts.head')
 </head>
@@ -44,6 +45,8 @@
 
 @include('layouts.footer')
 @include('layouts.js-scripts')
+
+
 </body>
 
 </html>

@@ -24,7 +24,6 @@
     </ol>
 @endsection
 @section('content')
-    {{-- {{dd($setting)}} --}}
 
     <div class="container-fluid">
 

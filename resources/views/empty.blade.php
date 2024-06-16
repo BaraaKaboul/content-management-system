@@ -28,9 +28,7 @@
 
         <div class="animated fadeIn">
             <div class="row">
-                <div class="col-sm-6 col-lg-3">
                     <!-- ////////////////   here   ////////////////-->
-                </div>
             </div>
         </div>
     </div>

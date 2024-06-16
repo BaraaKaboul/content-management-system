@@ -62,7 +62,7 @@
                                     </button>
                                 </div>
                                 <div class="col-xs-6 text-xs-right">
-                                    <button type="button" class="btn btn-link p-x-0">فراموشی رمز ورود</button>
+                                    <a type="button" href="{{route('register')}}" class="btn btn-link p-x-0">Don't have an account ?</a>
                                 </div>
                             </div>
                         </div>
